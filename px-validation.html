@@ -11,7 +11,10 @@ Element providing solution to no problem in particular. As a simple, increments 
 
 ##### Usage
 
-    <px-validation counter-value="1">Hi</px-validation>
+    <px-validation>
+      <px-validator validation-method="isNumber" import="px-example-validator.html"></px-validator>
+      <px-validator multi-step-validation='["isNumber", "isRed", "isBlue"]' import="px-example-validator.html"></px-validator>
+    </px-validation>
 
 @element px-validation
 @blurb Element providing solution to no problem in particular.
@@ -28,37 +31,17 @@ Element providing solution to no problem in particular. As a simple, increments 
   Polymer({
     is: 'px-validation',
 
-    /**
-     * Properties block, expose attribute values to the DOM via 'reflect'
-     *
-     * @property properties
-     * @type Object
-     */
-    properties: {
-      counterValue: {
-        type: Number,
-        reflect: true
-      }
-    },
-
-    /**
-     * Loads the imported validators specificed in the 'import' property.
-     *
-     * @method ready
-     */
-
-    attached: function() {
-      this.childCount = Polymer.dom(this).children.length;
-      this.validate(2);
-      // do something with childCount ...
-    },
     validate: function(value){
+      var result = {passedValidation : true};
       Polymer.dom(this).querySelectorAll('px-validator').map(function(validatorEl){
         validatorEl.validators.map(function(validatorMethod){
-          console.log(validatorMethod(value));
+          if (!validatorMethod(value)){
+            result.passedValidation = false;
+            result.failedValidationFunctionName = validatorMethod.name;
+          }
         });
       });
-
+      return result;
     }
 
   });
