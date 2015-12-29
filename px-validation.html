@@ -49,10 +49,17 @@ Element providing solution to no problem in particular. As a simple, increments 
 
     attached: function() {
       this.childCount = Polymer.dom(this).children.length;
-      console.log(this.childCount);
+      this.validate(2);
       // do something with childCount ...
-    }
+    },
+    validate: function(value){
+      Polymer.dom(this).querySelectorAll('px-validator').map(function(validatorEl){
+        validatorEl.validators.map(function(validatorMethod){
+          console.log(validatorMethod(value));
+        });
+      });
 
+    }
 
   });
 </script>

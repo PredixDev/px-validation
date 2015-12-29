@@ -54,10 +54,6 @@ Element providing solution to no problem in particular. As a simple, increments 
       validationMethod: {
         type: String,
         value: ''
-      },
-      validationMethod: {
-        type: String,
-        value: ''
       }
     },
 
@@ -68,7 +64,9 @@ Element providing solution to no problem in particular. As a simple, increments 
      */
     ready: function() {
       this.importHref(this.import, function(e) {
-        this.validators.push(window.PxValidators[this.validationMethod]);
+        if (this.validationMethod && window.PxValidators[this.validationMethod]){
+          this.validators.push(window.PxValidators[this.validationMethod]);
+        }
 
         this.multiStepValidation.map(function(funcName){
           this.validators.push(window.PxValidators[funcName]);
