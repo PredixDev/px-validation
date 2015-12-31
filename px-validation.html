@@ -4,7 +4,7 @@
     'grunt depserve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
 -->
 <link rel="import" href="../polymer/polymer.html" />
-
+<link rel="import" href="px-validator.html" />
 
 <!--
 Element providing solution to no problem in particular. As a simple, increments a counter when clicked.
@@ -34,6 +34,7 @@ Element providing solution to no problem in particular. As a simple, increments 
     validate: function(value){
       var result = {passedValidation : true};
       Polymer.dom(this).querySelectorAll('px-validator').map(function(validatorEl){
+        console.log(validatorEl.validators);
         validatorEl.validators.map(function(validatorMethod){
           if (!validatorMethod(value)){
             result.passedValidation = false;
