@@ -1,7 +1,7 @@
 <script>
     PxValidators = {
     isNumber: function isNumber(value) {
-      return Number.isInteger(value);
+      return ((value || value === 0) && value.toString() !== "true") ? (+value === +value) : false;
     },
     isRed: function isRed(value) {
       return Number.isInteger(value);

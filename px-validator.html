@@ -68,9 +68,9 @@ Element providing solution to no problem in particular. As a simple, increments 
           this.validators.push(window.PxValidators[this.validationMethod]);
         }
 
-        this.multiStepValidation.map(function(funcName){
-          this.validators.push(window.PxValidators[funcName]);
-        }.bind(this));
+        this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
+          return window.PxValidators[funcName];
+        }.bind(this)));
 
       }, function(e) {
         // loading error
