@@ -1,12 +1,22 @@
 <script>
     PxValidators = {
-    isNumber: function isNumber(value) {
-      return ((value || value === 0) && value.toString() !== "true") ? (+value === +value) : false;
+    errorObject : function() {
+      return {passedValidation: false,
+      failedValidationFunctionName: '',
+      failedValidationErrorMessage: ''};
     },
-    isRed: function isRed(value) {
+    isNumber: function(value) {
+      var errObj = PxValidators.errorObject();
+      errObj.failedValidationFunctionName = 'isNumber';
+      errObj.failedValidationErrorMessage = '';
+      errObj.passedValidation = ((value || value === 0) && value.toString() !== "true") ? (+value === +value) : false;
+
+      return errObj;
+    },
+    isRed: function(value) {
       return Number.isInteger(value);
     },
-    isBlue: function isBlue(value) {
+    isBlue: function(value) {
       return false;
     }
   };

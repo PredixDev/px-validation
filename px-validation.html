@@ -33,11 +33,13 @@ Element providing solution to no problem in particular. As a simple, increments 
 
     validate: function(value){
       var result = {passedValidation : true};
+      var validationResult;
       Polymer.dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
-        validatorEl.validators.forEach(function(validatorMethod){
-          if (!validatorMethod(value)){
-            result.passedValidation = false;
-            result.failedValidationFunctionName = validatorMethod.name;
+        validatorEl.validators.every(function(validatorMethod){
+          validationResult = validatorMethod(value);
+          if (!validationResult.passedValidation){
+            result = validationResult;
+            return false;
           }
         });
       });
