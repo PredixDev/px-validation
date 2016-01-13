@@ -1,6 +1,6 @@
 // This will be an automatically-generated variable based on the component
 // name provided to the pxtestkit yeoman generator
-var px_validation_1;
+var px_validation;
 
 // This is the bootstrapping function that will run the base and custom tests
 // upon the completion of web components construction by Polymer
@@ -126,7 +126,7 @@ function testCase(options) {
         modifyFunction(rootElement);
       }
       eventSource.dispatchEvent(new Event(eventString));
-    })
+    });
   }
   else {
     test(testDescription, function() {
@@ -136,7 +136,7 @@ function testCase(options) {
         return;
       }
       assert.isTrue(assertFunction(rootElement));
-    })
+    });
   }
 }
 
@@ -155,4 +155,4 @@ function runBaseTests() {
     });
 
   });
-};
+}

@@ -5,5 +5,19 @@ function runCustomTests() {
   // This is the placeholder suite to place custom tests in
   // Use testCase(options) for a more convenient setup of the test cases
   suite('Custom Automation Tests for px-validation', function() {
+    px_validation = document.getElementById('px_validation_1');
+
+    test('Check there is a single px-validator child defined on test fixture', function(){
+      assert.lengthOf(Polymer.dom(px_validation).children, 1);
+    });
+    test('Integer isNumber validation returns true', function() {
+      assert.isTrue(px_validation.validate(2).passedValidation);
+    });
+    test('String representation of number via isNumber validation returns true', function() {
+      assert.isTrue(px_validation.validate('2').passedValidation);
+    });
+    test('String via isNumber validation returns false', function() {
+      assert.isFalse(px_validation.validate('abc').passedValidation);
+    });
   });
-};
+}
