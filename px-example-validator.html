@@ -8,7 +8,7 @@
     isNumber: function(value) {
       var errObj = PxValidators.errorObject();
       errObj.failedValidationFunctionName = 'isNumber';
-      errObj.failedValidationErrorMessage = '';
+      errObj.failedValidationErrorMessage = 'Enter a numeric value';
       errObj.passedValidation = ((value || value === 0) && value.toString() !== "true") ? (+value === +value) : false;
 
       return errObj;
