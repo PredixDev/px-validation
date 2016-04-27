@@ -7,7 +7,7 @@
 <link rel="import" href="px-validator.html" />
 
 <!--
-Element providing solution to no problem in particular. As a simple, increments a counter when clicked.
+Element providing built-in as well as developer supplied validation solutions
 
 ##### Usage
 
@@ -17,7 +17,7 @@ Element providing solution to no problem in particular. As a simple, increments 
     </px-validation>
 
 @element px-validation
-@blurb Element providing solution to no problem in particular.
+@blurb Element providing built-in as well as developer supplied validation solutions
 @homepage index.html
 @demo demo.html
 -->
@@ -30,7 +30,13 @@ Element providing solution to no problem in particular. As a simple, increments 
 <script>
   Polymer({
     is: 'px-validation',
-
+    /**
+     * This method loops through each validator and validates the content
+     *
+     * @method {validate}
+     * @param {value}
+     * @return {Boolean}
+     */
     validate: function(value){
       var result = {passedValidation : true};
       var validationResult;

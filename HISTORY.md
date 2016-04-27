@@ -1,3 +1,7 @@
+v0.0.4
+=================
+* Updated README to point to github pages API
+
 v0.0.3
 =================
 * Updated License
