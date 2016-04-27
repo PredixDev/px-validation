@@ -7,6 +7,12 @@ function runCustomTests() {
   suite('Custom Automation Tests for px-validation', function() {
     px_validation = document.getElementById('px_validation_1');
 
+    suiteSetup(function(done){
+      flush(function(){
+        done();
+      });
+    });
+
     test('Check there is a single px-validator child defined on test fixture', function(){
       assert.lengthOf(Polymer.dom(px_validation).children, 1);
     });
