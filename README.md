@@ -1,4 +1,4 @@
-#Px-validation
+#Px-validation [![Build Status](https://travis-ci.org/PredixDev/px-validation.svg?branch=master)](https://travis-ci.org/PredixDev/px-validation)
 
 ## Overview
 
