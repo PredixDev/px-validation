@@ -44,7 +44,16 @@ git pull origin gh-pages
 yes | cp ../tmp_bower/bower.json bower.json
 
 #install your new tag through bower, it will fail without forcing it.
-bower install ${REPO_NAME} --force
+bower #optimize for production
+cd ${REPO_NAME} #go into the component folder
+npm install vulcanize
+vulcanize index.html -o index.vulacanized.html --inline-scripts --inline-css --strip-comments
+yes | cp index.vulacanized.html index.html
+rm index.vulacanized.html
+cd ../ #remember to exit out of the component before you do any git stuff
+
+install ${REPO_NAME} --force
+
 
 #do the git stuff
 git add .

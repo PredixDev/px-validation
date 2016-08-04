@@ -78,7 +78,8 @@
        */
       validationMethod: {
         type: String,
-        value: ''
+        value: '',
+        observer: '_validationMethodChanged'
       }
     },
 
@@ -88,19 +89,37 @@
      * @method ready
      */
     ready: function() {
-      this.importHref(this.import, function(e) {
-        if (this.validationMethod && window.PxValidators[this.validationMethod]){
-          this.validators.push(window.PxValidators[this.validationMethod]);
-        }
+      this._importHref();
+    },
+    /**
+     * Observer to update the validation method
+     *
+     * @method _validationMethodChanged
+     */
+     _validationMethodChanged: function () {
+       this._importHref();
+     },
 
-        this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
-          return window.PxValidators[funcName];
-        }.bind(this)));
+     /**
+      * Imports the Href with the validation methods
+      *
+      * @method _importHref
+      */
+      _importHref: function () {
+          this.validators = [];
+         this.importHref(this.import, function(e) {
+           if (this.validationMethod && window.PxValidators[this.validationMethod]){
+             this.validators.push(window.PxValidators[this.validationMethod]);
+           }
 
-      }, function(e) {
-        console.error('Error, could not load ' + this.import);
-      });
-    }
+           this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
+             return window.PxValidators[funcName];
+           }.bind(this)));
+
+         }, function(e) {
+           console.error('Error, could not load ' + this.import);
+         });
+       }
 
   });
 </script>

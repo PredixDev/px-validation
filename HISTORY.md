@@ -1,3 +1,8 @@
+v0.2.2
+=================
+* Validation method can be changed dynamically
+* Updated comments for viewer
+
 v0.2.1
 =================
 * added demo link on README

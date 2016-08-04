@@ -13,11 +13,19 @@
 
       return errObj;
     },
-    isRed: function(value) {
-      return Number.isInteger(value);
+    isInteger: function(value) {
+      var errObj = PxValidators.errorObject();
+      errObj.failedValidationFunctionName = 'isInteger';
+      errObj.failedValidationErrorMessage = 'Enter an integer value';
+      errObj.passedValidation = !isNaN(value) && Number.isInteger(parseFloat(value));
+      return errObj;
     },
-    isBlue: function(value) {
-      return false;
+    alwaysFails: function(value) {
+      var errObj = PxValidators.errorObject();
+      errObj.failedValidationFunctionName = 'alwaysFails';
+      errObj.failedValidationErrorMessage = 'Nope';
+      errObj.passedValidation = false;
+      return errObj;
     }
   };
 
