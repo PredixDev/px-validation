@@ -1,3 +1,8 @@
+v0.2.1
+=================
+* Validation method can be changed dynamically
+* Updated comments for viewer
+
 v0.2.0
 =================
 * Upgrade to Polymer 1.5.0

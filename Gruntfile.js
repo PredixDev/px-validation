@@ -24,7 +24,8 @@ module.exports = function (grunt) {
             dist: {
                 files: {
                     'css/noprefix/px-validation-sketch.css': 'sass/px-validation-sketch.scss',
-                    'css/noprefix/px-validation.css': 'sass/px-validation-predix.scss'
+                    'css/noprefix/px-validation.css': 'sass/px-validation-predix.scss',
+                    'css/noprefix/px-validation-demo.css': 'sass/px-validation-demo.scss'
                 }
             }
         },
