@@ -1,6 +1,6 @@
 #Px-validation [![Build Status](https://travis-ci.org/PredixDev/px-validation.svg?branch=master)](https://travis-ci.org/PredixDev/px-validation)
 
-[px-validation demo](https://predixdev.github.io/px-app-nav)
+[px-validation demo](https://predixdev.github.io/px-validation)
 
 ## Overview
 
