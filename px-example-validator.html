@@ -16,7 +16,7 @@
       var errObj = PxValidators.errorObject();
       errObj.failedValidationFunctionName = 'isInteger';
       errObj.failedValidationErrorMessage = 'Enter an integer value';
-      errObj.passedValidation = !isNaN(value) && Number.isInteger(parseFloat(value));
+      errObj.passedValidation = Number.isInteger(parseFloat(value));
       return errObj;
     },
     alwaysFails: function(value) {
