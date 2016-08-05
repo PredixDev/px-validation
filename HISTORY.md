@@ -1,3 +1,7 @@
+v0.2.3
+=================
+* changed isNumber validation method back to original.
+
 v0.2.2
 =================
 * Validation method can be changed dynamically
