@@ -8,8 +8,7 @@ function runCustomTests() {
     var px_validation = document.getElementById('px_validation_1');
 
     suiteSetup(function(done){
-      document.addEventListener('px-validator-loaded', function(){
-        // debugger;
+      flush(function(){
         done();
       });
     });
