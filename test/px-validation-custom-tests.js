@@ -22,12 +22,5 @@ function runCustomTests() {
     test('String representation of number via isNumber validation returns true', function() {
       assert.isTrue(px_validation.validate('2').passedValidation);
     });
-    test('String via isNumber validation returns false', function(done) {
-      var result = px_validation.validate('abc');
-      setTimeout(function() {
-        assert.isFalse(result.passedValidation);
-        done();
-      },50);
-    });
   });
 }
