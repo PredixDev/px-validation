@@ -8,7 +8,8 @@ function runCustomTests() {
     var px_validation = document.getElementById('px_validation_1');
 
     suiteSetup(function(done){
-      flush(function(){
+      document.addEventListener('px-validator-loaded', function(){
+        // debugger;
         done();
       });
     });
@@ -27,7 +28,7 @@ function runCustomTests() {
       setTimeout(function() {
         assert.isFalse(result.passedValidation);
         done();
-      },250);
+      },50);
     });
   });
 }

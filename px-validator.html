@@ -84,14 +84,6 @@
     },
 
     /**
-     * Loads the imported validators specificed in the 'import' property.
-     *
-     * @method ready
-     */
-    ready: function() {
-      this._importHref();
-    },
-    /**
      * Observer to update the validation method
      *
      * @method _validationMethodChanged
@@ -106,16 +98,15 @@
       * @method _importHref
       */
       _importHref: function () {
-          this.validators = [];
+        this.validators = [];
          this.importHref(this.import, function(e) {
            if (this.validationMethod && window.PxValidators[this.validationMethod]){
              this.validators.push(window.PxValidators[this.validationMethod]);
            }
-
            this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
              return window.PxValidators[funcName];
            }.bind(this)));
-
+           this.fire('px-validator-loaded');
          }, function(e) {
            console.error('Error, could not load ' + this.import);
          });
