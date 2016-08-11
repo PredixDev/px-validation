@@ -5,7 +5,7 @@ function runCustomTests() {
   // This is the placeholder suite to place custom tests in
   // Use testCase(options) for a more convenient setup of the test cases
   suite('Custom Automation Tests for px-validation', function() {
-    px_validation = document.getElementById('px_validation_1');
+    var px_validation = document.getElementById('px_validation_1');
 
     suiteSetup(function(done){
       flush(function(){
@@ -27,7 +27,7 @@ function runCustomTests() {
       setTimeout(function() {
         assert.isFalse(result.passedValidation);
         done();
-      },50);
+      },250);
     });
   });
 }
