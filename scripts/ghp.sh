@@ -37,8 +37,6 @@ cp bower.json ../tmp_bower/bower.json
 #and checkout gh-pages - create it if it doesn't exist.
 git checkout $TARGET_BRANCH || git checkout --orphan $TARGET_BRANCH
 
-#pull to ensure this is the latest one.
-git pull origin gh-pages
 
 #copy the bower.json file from our temp directory into the current one, overriding it, and passing a yes in there's a prompt
 yes | cp ../tmp_bower/bower.json bower.json
