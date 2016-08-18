@@ -1,3 +1,7 @@
+v0.2.4
+=================
+* fixed script and updated bower.
+
 v0.2.3
 =================
 * changed isNumber validation method back to original.
