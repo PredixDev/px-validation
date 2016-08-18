@@ -1,3 +1,7 @@
+v0.2.5
+=================
+* added overflow to demoContainer and removed flex__wrap from mega-demo
+
 v0.2.4
 =================
 * fixed script and updated bower.
