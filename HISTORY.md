@@ -1,3 +1,7 @@
+v0.2.6
+=================
+* added parent component to demo snippet
+
 v0.2.5
 =================
 * added overflow to demoContainer and removed flex__wrap from mega-demo

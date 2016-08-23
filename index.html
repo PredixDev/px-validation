@@ -131,7 +131,8 @@ window.addEventListener('WebComponentsReady', function() {
       optionsArray = [
         {
           "validationMethod": "isNumber",
-          "import": "px-example-validator.html"
+          "import": "px-example-validator.html",
+          "parentComponent": ["<px-validation>","</px-validation>"]
         }
       ],
       pxTabs = Polymer.dom(document).querySelector('px-tab-pages'),
