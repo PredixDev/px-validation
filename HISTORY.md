@@ -1,3 +1,7 @@
+v0.3.1
+=================
+* Updated dependencies
+
 v0.2.6
 =================
 * added parent component to demo snippet
