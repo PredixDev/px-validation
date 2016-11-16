@@ -1,13 +1,13 @@
 {
     "name": "px-validation",
-    "version": "0.3.2",
+    "version": "0.3.3",
     "main": [
         "px-validation.html"
     ],
     "ignore": [
         ".*",
         "npm-debug.log",
-        "Gruntfile.js",
+        "gulpfile.js",
         "sass",
         "bower_components",
         "node_modules",
