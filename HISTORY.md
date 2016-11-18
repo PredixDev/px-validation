@@ -1,3 +1,7 @@
+v0.3.5
+==================
+* update dependencies for dropdown
+
 v0.3.4
 ==================
 * fixed missing import in demo sass
