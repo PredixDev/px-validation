@@ -1,8 +1,10 @@
+v0.3.4
+==================
+* fixed missing import in demo sass
 
 v0.3.3
 ==================
 * changing Gruntfile.js to gulpfile.js
-
 
 v0.3.2
 ==================
