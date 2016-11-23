@@ -1,6 +1,6 @@
 {
     "name": "px-validation",
-    "version": "0.3.5",
+    "version": "0.3.6",
     "main": [
         "px-validation.html"
     ],
@@ -18,7 +18,7 @@
     ],
     "dependencies": {
         "polymer": "^1.6.0",
-        "px-theme": "~1.1.2"
+        "px-theme": "^2.0.1"
     },
     "devDependencies": {
         "iron-component-page": "PolymerElements/iron-component-page#~v1.1.0",
