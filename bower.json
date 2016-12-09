@@ -1,6 +1,6 @@
 {
     "name": "px-validation",
-    "version": "0.3.7",
+    "version": "0.3.8",
     "main": [
         "px-validation.html"
     ],
