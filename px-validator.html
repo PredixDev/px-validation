@@ -34,7 +34,7 @@
      */
     properties: {
       /**
-       * The URL pointing to the validation functions to be imported for this validator.
+       * The URL pointing to the validation function(s) to be imported for this validator.
        * See px-example-validator.html for an example of this.
        *
        *     <px-validator import="px-example-validator.html"></px-validator>
@@ -46,7 +46,7 @@
         value: ''
       },
       /**
-       * Array containing the validation functions imported from the html import (specified in the `import` property).
+       * Array container that stores the validation function(s) imported from the html import (specified in the `import` property).
        *
        * @default []
        */
@@ -58,6 +58,7 @@
       },
       /**
        * Array containing the validation function names the developer wants to run against the value they wish to validate.
+       * Should EITHER specify validation-method (for single) or multi-step-validation (for multiple).
        *
        *     <px-validator multi-step-validation='["isNumber", "isRed", "isBlue"]' import="px-example-validator.html"></px-validator>
        *
@@ -71,6 +72,7 @@
       },
       /**
        * String containing the single validation function name the developer wants to run to validate the supplied test value.
+       * Should EITHER specify validation-method (for single) or multi-step-validation (for multiple).
        *
        *     <px-validator validation-method='isNumber' import="px-example-validator.html"></px-validator>
        *
@@ -84,7 +86,7 @@
     },
 
     /**
-     * Observer to update the validation method
+     * Observer to update the validation method.
      *
      * @method _validationMethodChanged
      */
@@ -93,7 +95,7 @@
      },
 
      /**
-      * Imports the Href with the validation methods
+      * Imports the Href with the validation methods.
       *
       * @method _importHref
       */

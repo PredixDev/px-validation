@@ -1,3 +1,7 @@
+v0.4.1
+==================
+* Improved documentation, fixed CodePen
+
 v0.4.0
 ==================
 * Updated dependencies
