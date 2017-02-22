@@ -30,6 +30,16 @@ Element providing built-in as well as developer supplied validation solutions
 <script>
   Polymer({
     is: 'px-validation',
+    properties: {
+      validateValue: {
+        type: String,
+        observer: 'validate'
+      },
+      validationResult: {
+        type: Object,
+        notify: true
+      }
+    },
     /**
      * This method loops through each validator and validates the content
      *
@@ -42,13 +52,16 @@ Element providing built-in as well as developer supplied validation solutions
       var validationResult;
       Polymer.dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
         validatorEl.validators.every(function(validatorMethod){
-          validationResult = validatorMethod(value);
+          // validationResult = validatorMethod(value);
+          validationResult = validatorMethod.call(this, value);
           if (!validationResult.passedValidation){
             result = validationResult;
             return false;
           }
-        });
-      });
+        }.bind(this));
+      }.bind(this));
+      this.set('validationResult', {});
+      this.set('validationResult', result);
       return result;
     }
 

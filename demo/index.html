@@ -38,7 +38,9 @@
       <!-- Component ---------------------------------------------------------->
       <px-demo-component>
 
-        <px-validation id="validationEl">
+        <px-validation id="validationEl"
+          validate-value="[[hostValue]]"
+          validation-result="{{validationResult}}">
           <px-validator 
             validation-method="{{props.validationMethod.value}}"
             import="{{props.import.value}}">
@@ -46,9 +48,9 @@
         </px-validation>
 
         <label id="label" for="example">Validation Method: <strong>{{props.validationMethod.value}}</strong></label>
-        <input id="example" class="text-input input--regular" type="text" placeholder="" onkeyup="isValid(value)" />
+        <input id="example" class="text-input input--regular" type="text" placeholder="" value="{{hostValue::input}}" />
         <br/>
-        <small id="validationWarning" class="form-field__help validation-error hidden"></small>
+        <small id="validationWarning" class$="form-field__help {{validationClasses}}"></small>
 
       </px-demo-component>
       <!-- END Component ------------------------------------------------------>
@@ -136,29 +138,15 @@
       }
     },
 
-    ready: function () {
-      var _this = this; 
-      lightDomLoaded = function() {
-        isValid = function(value) {
-          debugger;
-          var validator = Polymer.dom(_this.root).querySelector("#validationEl"),
-              error = validator.validate(value);
-          if(value && !error.passedValidation) {
-            Polymer.dom(_this.root).querySelector("#validationWarning").innerHTML = error.failedValidationErrorMessage;
-            Polymer.dom(_this.root).querySelector("#validationWarning").classList.remove("hidden");
-            Polymer.dom(_this.root).querySelector("#example").classList.add("validation-error");
-            Polymer.dom(_this.root).querySelector("#label").classList.add("validation-error");
-          }
-          else {
-            Polymer.dom(_this.root).querySelector("#validationWarning").classList.add("hidden");
-            Polymer.dom(_this.root).querySelector("#example").classList.remove("validation-error");
-            Polymer.dom(_this.root).querySelector("#label").classList.remove("validation-error");
-          }
-        }
+    listeners: {
+        'validation_ran': '_validated'
       },
-      content = Polymer.dom(this.root).querySelector('content'),
-      //this calls the lightDomLoaded method when the content is loaded, and makes sure the Polymer this is bound to that function
-      _observer = Polymer.dom(content).observeNodes(lightDomLoaded);
+
+    _validated: function(e){
+      console.log(e.detail.errObj.passedValidation)
     }
+
+
+
   });
 </script>

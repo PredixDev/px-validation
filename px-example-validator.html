@@ -1,3 +1,4 @@
+
 <script>
     PxValidators = {
     errorObject : function() {
@@ -10,6 +11,7 @@
       errObj.failedValidationFunctionName = 'isNumber';
       errObj.failedValidationErrorMessage = 'Enter a numeric value';
       errObj.passedValidation = ((value || value === 0) && value.toString() !== "true") ? (+value === +value) : false;
+      this.fire('validation_ran',{errObj});
       return errObj;
     },
     alwaysFails: function(value) {
@@ -17,6 +19,7 @@
       errObj.failedValidationFunctionName = 'alwaysFails';
       errObj.failedValidationErrorMessage = 'Nope';
       errObj.passedValidation = false;
+      this.fire('validation_ran');
       return errObj;
     }
   };
