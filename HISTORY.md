@@ -1,3 +1,7 @@
+v1.0.0
+==================
+* Update dependencies for design refresh
+
 v0.4.5
 ==================
 * Updated to new demo using px-demo

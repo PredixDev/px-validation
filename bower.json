@@ -1,6 +1,6 @@
 {
   "name": "px-validation",
-  "version": "0.4.5",
+  "version": "1.0.0",
   "main": [
     "px-validation.html"
   ],
@@ -26,10 +26,10 @@
   ],
   "dependencies": {
     "polymer": "^1.6.0",
-    "px-theme": "^2.0.1"
+    "px-theme": "^3.0.0"
   },
   "devDependencies": {
-    "px-starter-kit-design": "^0.7.0",
-    "px-demo": "^1.2.4"
+    "px-starter-kit-design": "^1.0.0",
+    "px-demo": "^2.0.0"
   }
 }
