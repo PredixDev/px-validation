@@ -1,6 +1,6 @@
 <!-- Common imports -->
 <link rel="import" href="../../polymer/polymer.html" />
-<link rel="import" href="../../px-polymer-font-awesome/polymer-font-awesome.html" />
+<link rel="import" href="../../px-icon-set/px-icon-set.html" />
 
 <!-- Common demo imports -->
 <link rel="import" href="../../px-demo/px-demo-header.html" />
@@ -39,7 +39,7 @@
       <px-demo-component>
 
         <px-validation id="validationEl">
-          <px-validator 
+          <px-validator
             validation-method="{{props.validationMethod.value}}"
             import="{{props.import.value}}">
           </px-validator>
@@ -110,9 +110,9 @@
         type: Array,
         value: function(){
           return [
-            { 
+            {
               configName: "Default",
-              configReset: true 
+              configReset: true
             }
           ]
         }
@@ -124,7 +124,7 @@
        * @type Sring
        */
       errorMessage:{
-        type: String, 
+        type: String,
         value: ""
       }
     },

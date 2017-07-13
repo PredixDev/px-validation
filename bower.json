@@ -25,11 +25,9 @@
     "wct.conf.json"
   ],
   "dependencies": {
-    "polymer": "^1.9.0",
-    "px-theme": "^3.0.0"
+    "polymer": "^1.9.0"
   },
   "devDependencies": {
-    "px-starter-kit-design": "^1.0.0",
     "px-demo": "^2.0.0"
   },
   "resolutions": {
