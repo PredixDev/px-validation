@@ -1,3 +1,7 @@
+v1.0.1
+==================
+* capitalize validation message
+
 v1.0.0
 ==================
 * Update dependencies for design refresh

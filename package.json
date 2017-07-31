@@ -2,8 +2,8 @@
     "name": "px-validation",
     "author": "General Electric",
     "description": "A px component that can be used for validation of form input, data table input, etc",
-    "version": "1.0.0",
-    "private": true,
+    "version": "1.0.1",
+    "private": false,
     "extName": null,
     "repository": {
         "type": "git",
