@@ -1,3 +1,7 @@
+v1.0.2
+==================
+* re-kick travis build
+
 v1.0.1
 ==================
 * capitalize validation message
