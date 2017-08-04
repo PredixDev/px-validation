@@ -1,3 +1,7 @@
+v1.0.3
+==================
+* dynamic theming for demo
+
 v1.0.2
 ==================
 * re-kick travis build
