@@ -1,3 +1,7 @@
+v1.0.4
+==================
+* fix comment for analyzer
+
 v1.0.3
 ==================
 * dynamic theming for demo
