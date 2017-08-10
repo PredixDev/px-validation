@@ -1,20 +1,14 @@
-<!--
-    Relative paths assume component is being run from inside an app or another component, where dependencies are flat
-    siblings. When this component is run from its own repo (e.g. ui tests, examples), we assume the server is started with
-    'grunt depserve' (or similar server setup) to enable correct finding of bower dependencies for local runs.
--->
-<link rel="import" href="../polymer/polymer.html" />
-
+<link rel="import" href="../polymer/polymer.html"/>
 
 <!--
 
-##### Usage
+### Usage
 
     <px-validator validation-method="isNumber" import="px-example-validator.html"></px-validator>
 
 @element px-validator
 @homepage index.html
-@demo demo.html
+@demo index.html
 -->
 <dom-module id="px-validator">
   <template>
