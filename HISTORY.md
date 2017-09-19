@@ -1,3 +1,7 @@
+v1.0.5
+==================
+* fix loading of example validator into demo page
+
 v1.0.4
 ==================
 * fix comment for analyzer

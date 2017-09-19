@@ -41,7 +41,7 @@
         <px-validation id="validationEl">
           <px-validator
             validation-method="{{props.validationMethod.value}}"
-            import="{{props.import.value}}">
+            import="{{_exampleValidatorImport}}">
           </px-validator>
         </px-validation>
 
@@ -75,7 +75,10 @@
     is: 'px-validation-demo',
 
     properties: {
-
+      _exampleValidatorImport:{
+        type: String,
+        computed: '_computeValidatorImportURL(props.import.value)'
+      },
       props: {
         type: Object,
         value: function(){ return this.demoProps; }
@@ -141,6 +144,11 @@
         Polymer.dom(this.root).querySelector("#example").classList.remove("validation-error");
         Polymer.dom(this.root).querySelector("#label").classList.remove("validation-error");
       }
+    },
+    _computeValidatorImportURL: function(val){
+      var importPath = this.importPath;
+      importPath = importPath.substr(0,importPath.indexOf('demo/'));
+      return importPath + val;
     }
 
 
