@@ -1,3 +1,7 @@
+v1.0.6
+==================
+* add device flags
+
 v1.0.5
 ==================
 * fix loading of example validator into demo page
