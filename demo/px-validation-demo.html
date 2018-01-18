@@ -132,13 +132,11 @@
       if(inputValue && !error.passedValidation) {
         Polymer.dom(this.root).querySelector("#validationWarning").classList.remove("hidden");
         Polymer.dom(this.root).querySelector("#example").classList.add("validation-error");
-        Polymer.dom(this.root).querySelector("#label").classList.add("validation-error");
         this.set('errorMessage', error.failedValidationErrorMessage);
       }
       else {
         Polymer.dom(this.root).querySelector("#validationWarning").classList.add("hidden");
         Polymer.dom(this.root).querySelector("#example").classList.remove("validation-error");
-        Polymer.dom(this.root).querySelector("#label").classList.remove("validation-error");
       }
     }
 

@@ -1,3 +1,7 @@
+v1.1.2
+==================
+* fix demo to match design guidelines
+
 v1.1.1
 ==================
 * fix relative path for demo
