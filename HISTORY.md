@@ -1,3 +1,7 @@
+v1.1.3
+==================
+* Fix demo for IE
+
 v1.1.2
 ==================
 * fix demo to match design guidelines
