@@ -1,3 +1,9 @@
+v1.2.0
+==================
+* fix multi-step-validation so it actually works
+* add ability to pass additional arguments to validators (#2)
+* update documentation to add additional examples
+
 v1.1.3
 ==================
 * Fix demo for IE

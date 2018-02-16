@@ -48,7 +48,7 @@
         </px-validation>
 
         <label id="label" for="example">Validation Method: <strong>{{props.validationMethod.value}}</strong></label>
-        <input id="example" class="text-input input--regular" type="text" placeholder="" on-keyup="isValid"/>
+        <input id="example" class="text-input input--regular" type="text" placeholder="" on-input="isValid"/>
         <br/>
         <small id="validationWarning" class="caps form-field__help validation-error">{{errorMessage}}</small>
 
@@ -115,7 +115,7 @@
         type: String,
         defaultValue: 'isNumber',
         inputType: 'dropdown',
-        inputChoices: ['isNumber', 'alwaysFails']
+        inputChoices: ['isNumber', 'alwaysFails', 'isBetween']
       },
 
       parentComponent: {
@@ -127,7 +127,7 @@
     isValid : function() {
       var validator = Polymer.dom(this.root).querySelector("#validationEl"),
           inputValue = Polymer.dom(this.root).querySelector('#example').value,
-          error = validator.validate(inputValue);
+          error = validator.validate(inputValue, 1, 5);
       if(inputValue && !error.passedValidation) {
         Polymer.dom(this.root).querySelector("#validationWarning").classList.remove("hidden");
         Polymer.dom(this.root).querySelector("#example").classList.add("validation-error");
@@ -136,6 +136,7 @@
       else {
         Polymer.dom(this.root).querySelector("#validationWarning").classList.add("hidden");
         Polymer.dom(this.root).querySelector("#example").classList.remove("validation-error");
+        this.set('errorMessage', '');
       }
     }
 

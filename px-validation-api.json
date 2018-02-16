@@ -13,11 +13,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 37,
+              "line": 29,
               "column": 6
             },
             "end": {
-              "line": 40,
+              "line": 32,
               "column": 7
             }
           },
@@ -33,11 +33,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 51,
+              "line": 41,
               "column": 7
             }
           },
@@ -53,11 +53,11 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 48,
               "column": 6
             },
             "end": {
-              "line": 65,
+              "line": 53,
               "column": 7
             }
           },
@@ -73,18 +73,16 @@
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 60,
               "column": 6
             },
             "end": {
-              "line": 78,
+              "line": 63,
               "column": 7
             }
           },
           "metadata": {
-            "polymer": {
-              "observer": "\"_validationMethodChanged\""
-            }
+            "polymer": {}
           },
           "defaultValue": "\"\""
         }
@@ -96,11 +94,11 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 86,
+              "line": 73,
               "column": 5
             },
             "end": {
-              "line": 88,
+              "line": 76,
               "column": 6
             }
           },
@@ -113,12 +111,12 @@
           "privacy": "protected",
           "sourceRange": {
             "start": {
-              "line": 95,
+              "line": 81,
               "column": 6
             },
             "end": {
-              "line": 108,
-              "column": 8
+              "line": 99,
+              "column": 7
             }
           },
           "metadata": {},
@@ -139,7 +137,7 @@
           "column": 10
         },
         "end": {
-          "line": 110,
+          "line": 101,
           "column": 3
         }
       },
@@ -151,11 +149,11 @@
           "description": "The URL pointing to the validation function(s) to be imported for this validator.\nSee px-example-validator.html for an example of this.\n\n    <px-validator import=\"px-example-validator.html\"></px-validator>",
           "sourceRange": {
             "start": {
-              "line": 37,
+              "line": 29,
               "column": 6
             },
             "end": {
-              "line": 40,
+              "line": 32,
               "column": 7
             }
           },
@@ -167,11 +165,11 @@
           "description": "Array container that stores the validation function(s) imported from the html import (specified in the `import` property).",
           "sourceRange": {
             "start": {
-              "line": 46,
+              "line": 36,
               "column": 6
             },
             "end": {
-              "line": 51,
+              "line": 41,
               "column": 7
             }
           },
@@ -183,11 +181,11 @@
           "description": "Array containing the validation function names the developer wants to run against the value they wish to validate.\nShould EITHER specify validation-method (for single) or multi-step-validation (for multiple).\n\n    <px-validator multi-step-validation='[\"isNumber\", \"isRed\", \"isBlue\"]' import=\"px-example-validator.html\"></px-validator>",
           "sourceRange": {
             "start": {
-              "line": 60,
+              "line": 48,
               "column": 6
             },
             "end": {
-              "line": 65,
+              "line": 53,
               "column": 7
             }
           },
@@ -199,11 +197,11 @@
           "description": "String containing the single validation function name the developer wants to run to validate the supplied test value.\nShould EITHER specify validation-method (for single) or multi-step-validation (for multiple).\n\n    <px-validator validation-method='isNumber' import=\"px-example-validator.html\"></px-validator>",
           "sourceRange": {
             "start": {
-              "line": 74,
+              "line": 60,
               "column": 6
             },
             "end": {
-              "line": 78,
+              "line": 63,
               "column": 7
             }
           },
@@ -236,22 +234,22 @@
       "tagname": "px-validator"
     },
     {
-      "description": "Element providing built-in as well as developer supplied validation solutions.\nShould be used in combination with [px-forms-design](https://www.predix-ui.com/#/css/px-forms-design/)\nto validate inputs and display appropriate error messages in proximity to the input.\n\n### Usage\n\n    <px-validation>\n      <px-validator validation-method=\"isNumber\" import=\"px-example-validator.html\"></px-validator>\n      <px-validator multi-step-validation='[\"isNumber\", \"isRed\", \"isBlue\"]' import=\"px-example-validator.html\"></px-validator>\n    </px-validation>",
+      "description": "Element providing built-in as well as developer supplied validation solutions.\nShould be used in combination with [px-forms-design](https://www.predix-ui.com/#/css/px-forms-design/)\nto style inputs and display appropriate error messages in proximity to the input.\n\n### Usage\nBasic:\n\n    <px-validation>\n      <px-validator\n        validation-method=\"isNumber\"\n        import=\"px-example-validator.html\">\n      </px-validator>\n    </px-validation>\n\nIn multi-step validation, the specified methods are tested in order. The first to fail will return an error. Example:\n\n    <px-validation>\n      <px-validator\n        multi-step-validation='[\"isNumber\", \"isBetween\"]'\n        import=\"px-example-validator.html\">\n      </px-validator>\n    </px-validation>\n\nThe `import` property should specify the path of a file containing your validation methods.\nSee [px-example-validator.html](https://github.com/PredixDev/px-validation/blob/master/px-example-validator.html)\nfor an example structure for this file and its methods.\n\n### Usage with px-forms-design\nHTML:\n\n    <px-validation id=\"myValidator\">\n      <px-validator multi-step-validation='[\"isNumber\", \"isBetween\"]' import=\"px-example-validator.html\"></px-validator>\n    </px-validation>\n    <input id=\"myInput\" class=\"text-input input--regular\" type=\"text\" on-keyup=\"isValid\"/><br/>\n    <small id=\"myError\" class=\"caps form-field__help validation-error hidden\">Enter a number between 1 and 5</small>\n\nJavaScript:\n\n    isValid: function() {\n      var result = myValidator.validate(myInput.value, 1, 5);\n      if(result.passedValidation) {\n        myErrorMessage.classList.add('hidden');\n        myInput.classList.remove('validation-error');\n      }\n      else {\n        myErrorMessage.classList.remove('hidden');\n        myInput.classList.add('validation-error');\n      }\n    }",
       "summary": "",
       "path": "px-validation.html",
       "properties": [],
       "methods": [
         {
           "name": "validate",
-          "description": "This method loops through each validator and validates the content",
+          "description": "This method loops through each validator and validates the content.\nAll parameters passed to this method are in turn passed\non to the function specified in `validation-method` or `multi-step-validation`\nof px-validator.",
           "privacy": "public",
           "sourceRange": {
             "start": {
-              "line": 36,
+              "line": 75,
               "column": 4
             },
             "end": {
-              "line": 49,
+              "line": 90,
               "column": 5
             }
           },
@@ -273,11 +271,11 @@
       "metadata": {},
       "sourceRange": {
         "start": {
-          "line": 27,
+          "line": 67,
           "column": 10
         },
         "end": {
-          "line": 51,
+          "line": 92,
           "column": 3
         }
       },
@@ -296,11 +294,11 @@
           "range": {
             "file": "px-validation.html",
             "start": {
-              "line": 22,
+              "line": 62,
               "column": 4
             },
             "end": {
-              "line": 22,
+              "line": 62,
               "column": 17
             }
           }

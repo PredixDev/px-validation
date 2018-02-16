@@ -19,6 +19,13 @@
       errObj.failedValidationErrorMessage = 'Nope';
       errObj.passedValidation = false;
       return errObj;
+    },
+    isBetween: function(value, min, max) {
+      var errObj = PxValidators.errorObject();
+      errObj.failedValidationFunctionName = 'isNumber';
+      errObj.failedValidationErrorMessage = 'Enter a number between ' + min + ' and ' + max;
+      errObj.passedValidation = (value > min && value < max);
+      return errObj;
     }
   };
 

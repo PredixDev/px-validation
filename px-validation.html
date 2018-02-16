@@ -4,14 +4,54 @@
 <!--
 Element providing built-in as well as developer supplied validation solutions.
 Should be used in combination with [px-forms-design](https://www.predix-ui.com/#/css/px-forms-design/)
-to validate inputs and display appropriate error messages in proximity to the input.
+to style inputs and display appropriate error messages in proximity to the input.
 
 ### Usage
+Basic:
 
     <px-validation>
-      <px-validator validation-method="isNumber" import="px-example-validator.html"></px-validator>
-      <px-validator multi-step-validation='["isNumber", "isRed", "isBlue"]' import="px-example-validator.html"></px-validator>
+      <px-validator
+        validation-method="isNumber"
+        import="px-example-validator.html">
+      </px-validator>
     </px-validation>
+
+In multi-step validation, the specified methods are tested in order. The first to fail will return an error. Example:
+
+    <px-validation>
+      <px-validator
+        multi-step-validation='["isNumber", "isBetween"]'
+        import="px-example-validator.html">
+      </px-validator>
+    </px-validation>
+
+The `import` property should specify the path of a file containing your validation methods.
+See [px-example-validator.html](https://github.com/PredixDev/px-validation/blob/master/px-example-validator.html)
+for an example structure for this file and its methods.
+
+### Usage with px-forms-design
+HTML:
+
+    <px-validation id="myValidator">
+      <px-validator multi-step-validation='["isNumber", "isBetween"]' import="px-example-validator.html"></px-validator>
+    </px-validation>
+    <input id="myInput" class="text-input input--regular" type="text" on-keyup="isValid"/><br/>
+    <small id="myError" class="caps form-field__help validation-error hidden">Enter a number between 1 and 5</small>
+
+JavaScript:
+
+    isValid: function() {
+      var result = myValidator.validate(myInput.value, 1, 5);
+      if(result.passedValidation) {
+        myErrorMessage.classList.add('hidden');
+        myInput.classList.remove('validation-error');
+      }
+      else {
+        myErrorMessage.classList.remove('hidden');
+        myInput.classList.add('validation-error');
+      }
+    }
+
 
 @element px-validation
 @blurb Element providing built-in as well as developer supplied validation solutions
@@ -28,22 +68,23 @@ to validate inputs and display appropriate error messages in proximity to the in
   Polymer({
     is: 'px-validation',
     /**
-     * This method loops through each validator and validates the content
-     *
-     * @method {validate}
-     * @param {value}
-     * @return {Boolean}
+     * This method loops through each validator and validates the content.
+     * All parameters passed to this method are in turn passed
+     * on to the function specified in `validation-method` or `multi-step-validation`
+     * of px-validator.
      */
     validate: function(value){
       var result = {passedValidation : true};
       var validationResult;
+      var args = arguments;
       Polymer.dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
         validatorEl.validators.every(function(validatorMethod){
-          validationResult = validatorMethod(value);
+          validationResult = validatorMethod.apply(null, args);
           if (!validationResult.passedValidation){
             result = validationResult;
             return false;
           }
+          return true;
         });
       });
       return result;

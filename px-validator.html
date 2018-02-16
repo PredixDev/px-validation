@@ -20,20 +20,12 @@
   Polymer({
     is: 'px-validator',
 
-    /**
-     * Properties block, expose attribute values to the DOM via 'reflect'
-     *
-     * @property properties
-     * @type Object
-     */
     properties: {
       /**
        * The URL pointing to the validation function(s) to be imported for this validator.
        * See px-example-validator.html for an example of this.
        *
        *     <px-validator import="px-example-validator.html"></px-validator>
-       *
-       * @default ''
        */
       import: {
         type: String,
@@ -41,8 +33,6 @@
       },
       /**
        * Array container that stores the validation function(s) imported from the html import (specified in the `import` property).
-       *
-       * @default []
        */
       validators: {
         type: Array,
@@ -55,8 +45,6 @@
        * Should EITHER specify validation-method (for single) or multi-step-validation (for multiple).
        *
        *     <px-validator multi-step-validation='["isNumber", "isRed", "isBlue"]' import="px-example-validator.html"></px-validator>
-       *
-       * @default []
        */
       multiStepValidation: {
         type: Array,
@@ -69,44 +57,47 @@
        * Should EITHER specify validation-method (for single) or multi-step-validation (for multiple).
        *
        *     <px-validator validation-method='isNumber' import="px-example-validator.html"></px-validator>
-       *
-       * @default []
        */
       validationMethod: {
         type: String,
-        value: '',
-        observer: '_validationMethodChanged'
+        value: ''
       }
     },
 
+    observers: [
+      '_validationMethodChanged(multiStepValidation,validationMethod)'
+    ],
+
     /**
      * Observer to update the validation method.
-     *
-     * @method _validationMethodChanged
      */
      _validationMethodChanged: function () {
+       if(this.validationMethod === undefined || this.multiStepValidation === undefined) return;
        this._importHref();
      },
 
      /**
       * Imports the Href with the validation methods.
-      *
-      * @method _importHref
       */
       _importHref: function () {
         this.validators = [];
-         this.importHref(this.import, function(e) {
-           if (this.validationMethod && window.PxValidators[this.validationMethod]){
-             this.validators.push(window.PxValidators[this.validationMethod]);
-           }
-           this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
-             return window.PxValidators[funcName];
-           }.bind(this)));
+        this.importHref(this.import, function(e) {
+          if (this.validationMethod && window.PxValidators[this.validationMethod]){
+            this.validators[0] = window.PxValidators[this.validationMethod];
+          }
+          else if(this.multiStepValidation) {
+            this.multiStepValidation.forEach(function(method) {
+              this.validators.push(window.PxValidators[method]);
+            }.bind(this));
+          }
+          //  this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
+          //    return window.PxValidators[funcName];
+          //  }.bind(this)));
            this.fire('px-validator-loaded');
-         }, function(e) {
-           console.error('Error, could not load ' + this.import);
-         });
-       }
+        }, function(e) {
+          console.error('Error, could not load ' + this.import);
+        });
+      }
 
   });
 </script>
