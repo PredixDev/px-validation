@@ -1,3 +1,7 @@
+v1.3.0
+==================
+* add arguments property for data-table use case (#2)
+
 v1.2.0
 ==================
 * fix multi-step-validation so it actually works

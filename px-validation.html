@@ -52,6 +52,23 @@ JavaScript:
       }
     }
 
+### Additional arguments
+There are two ways to specify additional arguments to be used in your validation methods:
+
+JavaScript:
+
+    myValidator.validate(value, 1, 5);
+
+HTML:
+
+    <px-validation>
+      <px-validator validation-method="isBetween" arguments="[1,5]">
+      </px-validator>
+    </px-validation>
+
+Arguments passed in the `arguments` property will be included *after* the ones passed in the JavaScript method call.
+
+
 
 @element px-validation
 @blurb Element providing built-in as well as developer supplied validation solutions
@@ -76,8 +93,9 @@ JavaScript:
     validate: function(value){
       var result = {passedValidation : true};
       var validationResult;
-      var args = arguments;
+      var args = Array.from(arguments);
       Polymer.dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
+        args = args.concat(validatorEl.arguments);
         validatorEl.validators.every(function(validatorMethod){
           validationResult = validatorMethod.apply(null, args);
           if (!validationResult.passedValidation){

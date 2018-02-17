@@ -61,6 +61,16 @@
       validationMethod: {
         type: String,
         value: ''
+      },
+      /**
+      * Additional arguments to pass in to the validation method. For cases like px-data-table where the `validate` method
+      * is fired automatically instead of programmatically by the developer.
+      */
+      arguments: {
+        type: Array,
+        value: function() {
+          return [];
+        }
       }
     },
 
@@ -90,10 +100,7 @@
               this.validators.push(window.PxValidators[method]);
             }.bind(this));
           }
-          //  this.validators.concat(this.validators, this.multiStepValidation.map(function(funcName){
-          //    return window.PxValidators[funcName];
-          //  }.bind(this)));
-           this.fire('px-validator-loaded');
+          this.fire('px-validator-loaded');
         }, function(e) {
           console.error('Error, could not load ' + this.import);
         });

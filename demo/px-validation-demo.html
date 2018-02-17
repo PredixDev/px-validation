@@ -43,7 +43,8 @@
         <px-validation id="validationEl">
           <px-validator
             validation-method="{{props.validationMethod.value}}"
-            import$="[[importPath]]../px-example-validator.html">
+            import$="[[importPath]]../px-example-validator.html"
+            arguments='[1,5]'>
           </px-validator>
         </px-validation>
 
@@ -127,7 +128,7 @@
     isValid : function() {
       var validator = Polymer.dom(this.root).querySelector("#validationEl"),
           inputValue = Polymer.dom(this.root).querySelector('#example').value,
-          error = validator.validate(inputValue, 1, 5);
+          error = validator.validate(inputValue);
       if(inputValue && !error.passedValidation) {
         Polymer.dom(this.root).querySelector("#validationWarning").classList.remove("hidden");
         Polymer.dom(this.root).querySelector("#example").classList.add("validation-error");
