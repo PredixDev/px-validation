@@ -1,4 +1,4 @@
-<!--
+/*
 Copyright (c) 2018, General Electric
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +12,8 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
--->
-
-<link rel="import" href="../polymer/polymer.html"/>
-<link rel="import" href="px-validator.html"/>
-
-<!--
+*/
+/**
 Element providing built-in as well as developer supplied validation solutions.
 Should be used in combination with [px-forms-design](https://www.predix-ui.com/#/css/px-forms-design/)
 to style inputs and display appropriate error messages in proximity to the input.
@@ -90,39 +86,46 @@ Arguments passed in the `arguments` property will be included *after* the ones p
 @blurb Element providing built-in as well as developer supplied validation solutions
 @homepage index.html
 @demo index.html
--->
-<dom-module id="px-validation">
-  <template>
+*/
+/*
+  FIXME(polymer-modulizer): the above comments were extracted
+  from HTML and may be out of place here. Review them and
+  then delete this comment!
+*/
+import '@polymer/polymer/polymer-legacy.js';
+
+import './px-validator.js';
+import { Polymer } from '@polymer/polymer/lib/legacy/polymer-fn.js';
+import { html } from '@polymer/polymer/lib/utils/html-tag.js';
+import { dom } from '@polymer/polymer/lib/legacy/polymer.dom.js';
+Polymer({
+  _template: html`
     <slot></slot>
-  </template>
-</dom-module>
+`,
 
-<script>
-  Polymer({
-    is: 'px-validation',
-    /**
-     * This method loops through each validator and validates the content.
-     * All parameters passed to this method are in turn passed
-     * on to the function specified in `validation-method` or `multi-step-validation`
-     * of px-validator.
-     */
-    validate: function(value){
-      var result = {passedValidation : true};
-      var validationResult;
-      var args = Array.from(arguments);
-      Polymer.dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
-        args = args.concat(validatorEl.arguments);
-        validatorEl.validators.every(function(validatorMethod){
-          validationResult = validatorMethod.apply(null, args);
-          if (!validationResult.passedValidation){
-            result = validationResult;
-            return false;
-          }
-          return true;
-        });
+  is: 'px-validation',
+
+  /**
+   * This method loops through each validator and validates the content.
+   * All parameters passed to this method are in turn passed
+   * on to the function specified in `validation-method` or `multi-step-validation`
+   * of px-validator.
+   */
+  validate: function(value){
+    var result = {passedValidation : true};
+    var validationResult;
+    var args = Array.from(arguments);
+    dom(this).querySelectorAll('px-validator').forEach(function(validatorEl){
+      args = args.concat(validatorEl.arguments);
+      validatorEl.validators.every(function(validatorMethod){
+        validationResult = validatorMethod.apply(null, args);
+        if (!validationResult.passedValidation){
+          result = validationResult;
+          return false;
+        }
+        return true;
       });
-      return result;
-    }
-
-  });
-</script>
+    });
+    return result;
+  }
+});
